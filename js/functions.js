@@ -58,14 +58,29 @@ export function nuevaCita(e) {
         editando = false;
 
     } else {
+        // Nuevo Registro
+
         // Generar ID unico
         citaObj.id = Date.now();
 
         // Creando una nueva cita
         administrarCitas.agregarCita({...citaObj});
 
-        // Mensaje de agregado correctamente
-        ui.imprimirAlerta("Se agregó correctamente");
+        // Insertar registro en IndexDB
+        const transaction = DB.transaction(["citas"], "readwrite");
+
+        // Habilitar en ObjectStore
+        const objectStore = transaction.objectStore("citas");
+
+        // Insertar en DB
+        objectStore.add(citaObj);
+
+        transaction.oncomplete = () => {
+            console.log("Cita Agregada");
+
+            // Mensaje de agregado correctamente
+            ui.imprimirAlerta("Se agregó correctamente");
+        }
     }
 
     // Mostrar el HTML de las citas
