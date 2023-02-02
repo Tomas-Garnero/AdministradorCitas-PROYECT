@@ -1,4 +1,4 @@
-import { datosCita, nuevaCita } from "../functions.js";
+import { datosCita, nuevaCita, crearDB } from "../functions.js";
 import { 
     mascotaInput, 
     propietarioInput, 
@@ -14,6 +14,7 @@ class App {
 
     constructor() {
         this.initApp();
+        this.createDB();
     }
     initApp() {
         mascotaInput.addEventListener("change", datosCita);
@@ -25,6 +26,10 @@ class App {
 
         // Formulario para nuevas citas
         formulario.addEventListener("submit", nuevaCita);
+    }
+
+    createDB() {
+        crearDB();
     }
 }
 

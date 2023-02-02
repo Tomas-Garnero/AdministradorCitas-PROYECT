@@ -14,6 +14,7 @@ const administrarCitas = new Citas();
 const ui = new UI(administrarCitas);
 
 let editando = false;
+let DB;
 
 
 // Obj con la info de la cita
@@ -122,4 +123,48 @@ export function cargarEdicion(cita) {
     formulario.querySelector(`button[type="submit"]`).textContent = "Guardar cambios";
 
     editando = true;
+}
+
+// Crear DB
+export function crearDB() {
+
+    // Crear db en version 1.0
+    const crearDB = window.indexedDB.open("citas", 1);
+
+    // Si hay un error
+    crearDB.onerror = function() {
+        console.log("Hubo un error");
+    }
+
+    // Si todo sale bien
+    crearDB.onsuccess = function() {
+        console.log("DB creada");
+
+        DB = crearDB.result;
+        console.log(DB);
+    }
+
+    // Definir el schema
+    crearDB.onupgradeneeded = function(e) {
+        const db = e.target.result;
+
+        const objectStore = db.createObjectStore("citas", {
+            keyPath: "id",
+            autoIncrement: true
+        })
+
+        // Definir todas las columnas
+        objectStore.createIndex("mascota", "mascota", {unique: false});
+        objectStore.createIndex("propietario", "propietario", {unique: false});
+        objectStore.createIndex("telefono", "telefono", {unique: false});
+        objectStore.createIndex("fecha", "fecha", {unique: false});
+        objectStore.createIndex("hora", "hora", {unique: false});
+        objectStore.createIndex("sintomas", "sintomas", {unique: false});
+        objectStore.createIndex("id", "id", {unique: true});
+
+        console.log("DB Creada y Lista");
+        
+    }
+
+
 }
