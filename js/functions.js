@@ -201,5 +201,8 @@ export function crearDB() {
         
     }
 
-
 }
+
+export function suma(a, b) {
+    return a + b;
+};

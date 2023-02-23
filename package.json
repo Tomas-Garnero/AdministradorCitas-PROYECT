@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Tomas-Garnero/AdministradorCitas-PROYECT#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "jest": "^29.4.3"
   }
 }
