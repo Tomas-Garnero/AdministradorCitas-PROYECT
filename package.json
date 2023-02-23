@@ -1,0 +1,22 @@
+{
+  "name": "proyecto-administrarcitas",
+  "version": "1.0.0",
+  "description": "Aprendiendo JEST",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomas-Garnero/AdministradorCitas-PROYECT.git"
+  },
+  "author": "Tomas Garnero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tomas-Garnero/AdministradorCitas-PROYECT/issues"
+  },
+  "homepage": "https://github.com/Tomas-Garnero/AdministradorCitas-PROYECT#readme",
+  "devDependencies": {
+    "jest": "^29.4.3"
+  }
+}
